@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master)](https://travis-ci.org/Cheezmeister/elixir-id3v2)
-
-# ID3v2
+# ID3v2 [![Build Status](https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master)](https://travis-ci.org/Cheezmeister/elixir-id3v2)
 
 Basic ID3v2 tag parsing for Elixir. This is a work in progress. 
 
@@ -8,6 +6,7 @@ Be prepared to *Use the Source, Luke*. Expect bugs.
 
 ## Usage
 
+```elixir
     contents = File.read!('track.mp3')
     tag_header = ID3v2.header(contents)
     {major, minor} = tag_header.version
@@ -17,6 +16,7 @@ Be prepared to *Use the Source, Luke*. Expect bugs.
     IO.puts "Track title: #{tag_frames.TIT2}"
     IO.puts "Track artist: #{tag_frames.TPE1}"
     IO.puts "Track album: #{tag_frames.TALB}"
+```
 
 ## Installation
 

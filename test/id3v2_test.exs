@@ -1,16 +1,7 @@
 defmodule ID3v2Test do
   use ExUnit.Case
 
-	@testfile "web/static/assets/mp3/Sonic_the_Hedgehog_3_LatinSphere_OC_ReMix.mp3"
-
-  test "test syntax" do
-    test "one" do
-      assert true
-    end
-    test two do
-      assert false
-    end
-  end
+	@testfile "test/fixtures/Sonic_the_Hedgehog_3_LatinSphere_OC_ReMix.mp3"
 
   test "header extraction" do
     file = File.read!(@testfile)

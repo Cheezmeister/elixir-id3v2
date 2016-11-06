@@ -93,11 +93,11 @@ defmodule ID3v2 do
     header
   end
 
-  defp read_flags(byte) do
+  def read_flags(byte) do
     HeaderFlags.read byte
   end
 
-  defp unpacked_size(quadbyte) do
+  def unpacked_size(quadbyte) do
     << byte1, byte2, byte3, byte4 >> = quadbyte
     byte4 + (byte3<<<7) + (byte2<<<14) + (byte1<<<21)
   end
@@ -159,10 +159,7 @@ defmodule ID3v2 do
     Map.merge %{key => value}, _read_frames(header, rest)
   end
 
-  @doc"""
-  TODO
-  """
-  defp read_payload(key, payload) do
+  def read_payload(key, payload) do
     << _encoding :: integer-8, _rest :: binary>> = payload
 
     # Special case nonsense goes here
@@ -186,13 +183,13 @@ defmodule ID3v2 do
     end
   end
 
-  defp read_user_url(payload) do
+  def read_user_url(payload) do
     # TODO bubble up description somehow
     {_description, link, _bom} = extract_null_terminated payload
     link
   end
 
-	defp read_user_text(payload) do
+	def read_user_text(payload) do
     {_description, text, bom} = extract_null_terminated payload
     case bom do
       nil -> text
@@ -200,12 +197,12 @@ defmodule ID3v2 do
     end
   end
 
-  defp extract_null_terminated(<< 1, rest::binary >>) do
+  def extract_null_terminated(<< 1, rest::binary >>) do
     << bom :: binary-size(2), content :: binary >> = rest
     {description, value} = scan_for_null_utf16 content, []
     {description, value, bom}
   end
-  defp extract_null_terminated(<< encoding::integer-8, content::binary >>) do
+  def extract_null_terminated(<< encoding::integer-8, content::binary >>) do
     {description, value} = case encoding do
       0 -> scan_for_null_utf8 content, []
       3 -> scan_for_null_utf8 content, []
@@ -229,30 +226,30 @@ defmodule ID3v2 do
     end
   end
 
-  defp read_utf16(<< bom :: binary-size(2), content :: binary >>) do
+  def read_utf16(<< bom :: binary-size(2), content :: binary >>) do
     read_utf16 bom, content
   end
 
-  defp read_utf16(bom, content) do
+  def read_utf16(bom, content) do
     {encoding, _charsize} = :unicode.bom_to_encoding(bom)
     :unicode.characters_to_binary content, encoding
   end
 
-  defp strip_zero_bytes(<<h, t::binary>>) do
+  def strip_zero_bytes(<<h, t::binary>>) do
     case h do
       0 -> t
       _ -> << h, strip_zero_bytes(t)::binary>>
     end
   end
 
-  defp strip_zero_bytes(<<h>>) do
+  def strip_zero_bytes(<<h>>) do
     case h do
       0 -> <<>>
       _ -> h
     end
   end
 
-  defp strip_zero_bytes(<<>>) do
+  def strip_zero_bytes(<<>>) do
     <<>>
   end
 

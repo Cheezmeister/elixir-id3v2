@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master)](https://travis-ci.org/Cheezmeister/elixir-id3v2)
+
 # ID3v2
 
 Basic ID3v2 tag parsing for Elixir. This is a work in progress. 

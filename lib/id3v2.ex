@@ -1,4 +1,6 @@
 defmodule ID3v2 do
+  require Logger
+
   @moduledoc """
   # ID3v2
 
@@ -154,7 +156,7 @@ defmodule ID3v2 do
     end
 
     value = read_payload(key, payload) |> strip_zero_bytes
-    # DEBUG IO.puts "#{key}: #{value}"
+    # Logger.debug "#{key}: #{value}"
 
     Map.merge %{key => value}, _read_frames(header, rest)
   end
@@ -224,6 +226,10 @@ defmodule ID3v2 do
       0 -> {to_string(Enum.reverse accum), rest}
       _ -> scan_for_null_utf8 rest, [c | accum]
     end
+  end
+
+  def read_utf16("") do
+    ""
   end
 
   def read_utf16(<< bom :: binary-size(2), content :: binary >>) do

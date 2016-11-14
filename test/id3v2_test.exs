@@ -94,9 +94,12 @@ defmodule ID3v2Test do
     assert ID3v2.strip_zero_bytes(<< 255, 255, 0 >>) == <<255, 255>>
   end
 
-  test "frame data" do
-    frames = ID3v2.frames(File.read!(@testfile))
-    assert frames["TALB"] == "OC ReMix"
-  end
+  Path.wildcard("test/fixtures/*.mp3") |> Enum.map(fn(file) ->
+    @thisfile file
+    test "frame data - #{Path.basename file}" do
+      frames = ID3v2.frames(File.read!(@thisfile))
+      assert frames["TPUB"] == "OverClocked ReMix"
+    end
+  end)
 
 end

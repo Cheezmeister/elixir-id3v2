@@ -121,7 +121,7 @@ defmodule ID3v2 do
     headerSize = h.size
     << _header :: binary-size(10), framedata :: binary-size(headerSize), _ :: binary >> = filecontent
 
-    _read_frames(h, framedata)
+    _read_frames(h, :binary.copy framedata)
   end
 
   # Handle padding bytes at the end of the tag
@@ -158,7 +158,7 @@ defmodule ID3v2 do
     value = read_payload(key, payload) |> strip_zero_bytes
     # Logger.debug "#{key}: #{value}"
 
-    Map.merge %{key => value}, _read_frames(header, rest)
+    Map.merge %{key => :binary.copy value}, _read_frames(header, rest)
   end
 
   def read_payload(key, payload) do

@@ -1,4 +1,4 @@
-# ID3v2 [![Build Status](https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master)](https://travis-ci.org/Cheezmeister/elixir-id3v2) [![hex.pm version](https://img.shields.io/hexpm/v/id3v2.svg?style=flat)](https://hex.pm/packages/id3v2)
+# ID3v2 [![Build Status](https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master)](https://travis-ci.org/Cheezmeister/elixir-id3v2) [![hex.pm version](https://img.shields.io/hexpm/v/id3v2.svg?style=flat)](https://hex.pm/packages/id3v2) [![Coverage Status](https://coveralls.io/repos/github/Cheezmeister/elixir-id3v2/badge.svg?branch=master)](https://coveralls.io/github/Cheezmeister/elixir-id3v2?branch=master)
 
 Basic ID3v2 tag parsing for Elixir. This is a work in progress. 
 

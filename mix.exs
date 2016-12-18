@@ -7,7 +7,8 @@ defmodule ID3v2.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps(),
+     deps: deps(Mix.env),
+     test_coverage: [tool: ExCoveralls],
      description: "ID3v2 tag header reading",
      package: package
     ]
@@ -29,8 +30,11 @@ defmodule ID3v2.Mixfile do
   #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
   #
   # Type "mix help deps" for more examples and options
-  defp deps do
-    [{:ex_doc, ">= 0.0.0", only: :dev}]
+  defp deps _ do
+    [
+      {:ex_doc, ">= 0.0.0"},
+      {:excoveralls, "~> 0.5", only: :ci}
+    ]
   end
 
   defp package do

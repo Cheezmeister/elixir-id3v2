@@ -4,7 +4,7 @@ defmodule ID3v2.Mixfile do
   def project do
     [app: :id3v2,
      version: "0.1.2",
-     elixir: "~> 1.0",
+     elixir: elixir(Mix.env),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(Mix.env),
@@ -12,6 +12,13 @@ defmodule ID3v2.Mixfile do
      description: "ID3v2 tag header reading",
      package: package
     ]
+  end
+
+  def elixir env do
+    case env do
+      :docs -> "~> 1.2"
+      _     -> "~> 1.0"
+    end
   end
 
   # Configuration for the OTP application
@@ -32,7 +39,7 @@ defmodule ID3v2.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps _ do
     [
-      {:ex_doc, ">= 0.0.0"},
+      {:ex_doc, ">= 0.0.0", only: :docs},
       {:excoveralls, "~> 0.5", only: :ci}
     ]
   end

@@ -74,6 +74,7 @@ defmodule ID3v2 do
   `version` is a `{major, minor}` tuple.
   `flags` is a `HeaderFlags` struct, see definition. Flags are only read, not recognized nor honored.
   """
+  @spec header(binary) :: map
   def header(filecontents) do
     << "ID3",
     version :: binary-size(2),
@@ -116,6 +117,7 @@ defmodule ID3v2 do
         ...
       }
   """
+  @spec frames(binary) :: map
   def frames(filecontent) do
     h = header(filecontent)
     headerSize = h.size

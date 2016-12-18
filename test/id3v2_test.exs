@@ -1,6 +1,7 @@
 defmodule ID3v2Test do
   use ExUnit.Case
 
+  # TODO run on several files to at least cover v2.{2,3,4}
 	@testfile "test/fixtures/Sonic_the_Hedgehog_3_LatinSphere_OC_ReMix.mp3"
 
   test "header extraction" do

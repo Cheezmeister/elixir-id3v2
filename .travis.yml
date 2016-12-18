@@ -8,8 +8,6 @@ matrix:
 ssudo: false
 before_script:
   - mix deps.get --only ci
-  - kiex use 1.2
-  - elixir --version
 env:
   - MIX_ENV=ci
 script:

@@ -160,7 +160,8 @@ defmodule ID3v2 do
     value = read_payload(key, payload) |> strip_zero_bytes
     # Logger.debug "#{key}: #{value}"
 
-    Map.merge %{key => :binary.copy value}, _read_frames(header, rest)
+    tempmap = Map.put(%{}, key, :binary.copy value)
+    Map.merge tempmap, _read_frames(header, rest)
   end
 
   def read_payload(key, payload) do

@@ -17,7 +17,7 @@ defmodule ID3v2.Mixfile do
   def elixir env do
     case env do
       :docs -> "~> 1.2"
-      _     -> "~> 1.2"
+      _     -> "~> 1.0"
     end
   end
 

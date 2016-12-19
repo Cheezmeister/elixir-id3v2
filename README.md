@@ -1,4 +1,4 @@
-# ID3v2 [![Build Status](https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master)](https://travis-ci.org/Cheezmeister/elixir-id3v2) [![hex.pm version](https://img.shields.io/hexpm/v/id3v2.svg?style=flat)](https://hex.pm/packages/id3v2) [![Coverage Status](https://coveralls.io/repos/github/Cheezmeister/elixir-id3v2/badge.svg?branch=master)](https://coveralls.io/github/Cheezmeister/elixir-id3v2?branch=master)
+# ID3v2 [![Build Status][travis-badge]][travis-url] [![hex.pm version][hex-badge]][hex-url] [![Coverage Status][coveralls-badge]][coveralls-url]
 
 Basic ID3v2 tag parsing for Elixir. This is a work in progress. 
 
@@ -29,4 +29,11 @@ The package can be installed as:
       [{:id3v2, "~> 0.1.0"}]
     end
     ```
+
+[coveralls-url]: https://coveralls.io/github/Cheezmeister/elixir-id3v2?branch=master
+[coveralls-badge]: https://coveralls.io/repos/github/Cheezmeister/elixir-id3v2/badge.svg?branch=master
+[hex-url]: https://hex.pm/packages/id3v2
+[hex-badge]: https://img.shields.io/hexpm/v/id3v2.svg?style=flat
+[travis-url]: https://travis-ci.org/Cheezmeister/elixir-id3v2
+[travis-badge]: https://travis-ci.org/Cheezmeister/elixir-id3v2.svg?branch=master
 

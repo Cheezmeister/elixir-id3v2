@@ -26,7 +26,7 @@ The package can be installed as:
 
     ```elixir
     def deps do
-      [{:id3v2, "~> 0.1.0"}]
+      [{:id3v2, "~> 0.1.2"}]
     end
     ```
 
